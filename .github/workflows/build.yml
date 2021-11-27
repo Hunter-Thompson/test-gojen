@@ -45,7 +45,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
     - name: Install gojen
-      run: go get github.com/Hunter-Thompson/gojen@v1.1.0
+      run: go install github.com/Hunter-Thompson/gojen@v1.1.1
     - name: Run gojen
       run: gojen --ci
     - name: Check for changes
@@ -61,10 +61,10 @@ jobs:
         }}/check-runs -F name="build" -F head_sha="$(git rev-parse HEAD)" -F
         status="completed" -F conclusion="success"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
     - if: steps.git_diff.outputs.has_changes
       name: Cancel workflow (if changed)
       run: gh api -X POST /repos/${{ github.event.pull_request.head.repo.full_name
         }}/actions/runs/${{ github.run_id }}/cancel
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
