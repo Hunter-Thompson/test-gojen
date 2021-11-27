@@ -45,9 +45,9 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
     - name: Install gojen
-      run: go install github.com/Hunter-Thompson/gojen@1.1.0
-	  - name: Run gojen
-	    run: gojen --ci
+      run: go get github.com/Hunter-Thompson/gojen@v1.1.0
+    - name: Run gojen
+      run: gojen --ci
     - name: Check for changes
       id: git_diff
       run: git diff --exit-code || echo "::set-output name=has_changes::true"
