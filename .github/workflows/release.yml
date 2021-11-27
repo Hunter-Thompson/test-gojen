@@ -43,7 +43,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Install gojen
-      run: go get github.com/Hunter-Thompson/gojen@v1.1.0
+      run: go install github.com/Hunter-Thompson/gojen@v1.1.0
     - name: Run gojen
       run: gojen --ci
   release:
