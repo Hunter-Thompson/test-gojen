@@ -8,7 +8,6 @@
   "authorOrganization": "test",
   "licensed": true,
   "readme": true,
-  "gojenVersion": "1.1.1",
   "release": true,
   "buildWorkflow": true,
   "githubToken": "GIT_TOKEN",
